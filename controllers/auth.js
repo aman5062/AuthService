@@ -1,5 +1,5 @@
 const authService = require('../services/auth')
-const COMPANY_REDIRECT_PAGE_URL='http://localhost:3000/company/home'
+const COMPANY_REDIRECT_PAGE_URL='https://authservice-hd30.onrender.com/company/home'
 class authController{
 
       async signup(req,res){
