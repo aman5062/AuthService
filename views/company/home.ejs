@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Page</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #222;
+            color: white;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .logout-btn {
+            padding: 8px 16px;
+            background-color: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .logout-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>Company Page</h2>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </nav>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const access_token = params.get("access_token");
+        console.log(access_token)
+        localStorage.setItem("access_token", access_token);
+
+        async function getMe(){
+            try {
+                const respond = await fetch('/api/auth/me',{
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${access_token}`
+                    }
+                })
+                const data = await respond.json()
+                if(!data.success){
+                    window.location.href = "/login";
+                }
+            } catch (error) {
+                window.location.href = "/login";
+            }
+        }
+        getMe()
+        async function logout() {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: 'POST',
+                    credentials: 'include' 
+                });
+
+                if (response.ok) {
+                    window.location.href = "/login"; 
+                } else {
+                    alert("Logout failed");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Something went wrong");
+            }
+        }
+    </script>
+
+</body>
+</html>
