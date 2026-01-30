@@ -2,12 +2,12 @@ const {Sequelize,DataTypes} = require('sequelize')
 const fs = require('fs')
 const path = require('path')
 const basename = path.basename(__filename)
-const DB_USERNAME=postgres
-const DB_NAME=authdb
-const DB_PASSWORD=1234
-const DB_HOST=database
-const DB_DIALECT=postgres
-const DB_PORT=5432
+const DB_USERNAME="postgres"
+const DB_NAME="authdb"
+const DB_PASSWORD="1234"
+const DB_HOST="database"
+const DB_DIALECT="postgres"
+const DB_PORT="5432"
 const sequelize = new Sequelize(
       DB_NAME,        // database name first
       DB_USERNAME,    // username second

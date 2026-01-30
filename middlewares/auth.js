@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const TOKEN_SECRET_KEY=sifasnkjnfdkjndskjnds
+const TOKEN_SECRET_KEY="sifasnkjnfdkjndskjnds"
 const auth = async(req,res,next)=>{
       // console.log("11")
       const token = req.headers.authorization?.split(' ')[1];
