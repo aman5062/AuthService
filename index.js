@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const db = require("./models/index")
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
-PORT = process.env.PORT
+PORT = 3000
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 app.use(express.json())
