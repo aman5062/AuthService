@@ -1,5 +1,5 @@
 const commonUtil = require("./common")
-
+const TOKEN_SECRET_KEY=sifasnkjnfdkjndskjnds
 const jwt = require("jsonwebtoken")
 const crypto = require("crypto");
 
@@ -10,7 +10,7 @@ class tokenGenerator{
 
             return jwt.sign(
             { user_id },
-            process.env.TOKEN_SECRET_KEY,
+            TOKEN_SECRET_KEY,
             { expiresIn: `${minutes}m` }
             );
       }

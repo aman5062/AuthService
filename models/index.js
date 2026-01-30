@@ -2,14 +2,20 @@ const {Sequelize,DataTypes} = require('sequelize')
 const fs = require('fs')
 const path = require('path')
 const basename = path.basename(__filename)
+const DB_USERNAME=postgres
+const DB_NAME=authdb
+const DB_PASSWORD=1234
+const DB_HOST=database
+const DB_DIALECT=postgres
+const DB_PORT=5432
 const sequelize = new Sequelize(
-      process.env.DB_NAME,        // database name first
-      process.env.DB_USERNAME,    // username second
-      process.env.DB_PASSWORD,    // password third
+      DB_NAME,        // database name first
+      DB_USERNAME,    // username second
+      DB_PASSWORD,    // password third
       {
-            host: process.env.DB_HOST,
-            dialect: process.env.DB_DIALECT,
-            port: process.env.DB_PORT
+            host: DB_HOST,
+            dialect: DB_DIALECT,
+            port: DB_PORT
       }
 )
 

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const TOKEN_SECRET_KEY=sifasnkjnfdkjndskjnds
 const auth = async(req,res,next)=>{
       // console.log("11")
       const token = req.headers.authorization?.split(' ')[1];
@@ -6,7 +7,7 @@ const auth = async(req,res,next)=>{
       return res.status(401).json({ message: "No token provided" });
       }
       try {
-            const decoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
+            const decoded = jwt.verify(token, TOKEN_SECRET_KEY);
             console.log(decoded)
             req.user = decoded;
             next();

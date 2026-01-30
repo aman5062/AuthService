@@ -1,4 +1,5 @@
 const authService = require('../services/auth')
+const COMPANY_REDIRECT_PAGE_URL='http://localhost:3000/company/home'
 class authController{
 
       async signup(req,res){
@@ -25,7 +26,7 @@ class authController{
                         secure: true,
                         sameSite: "strict"
                   });
-                  return res.redirect(`${process.env.COMPANY_REDIRECT_PAGE_URL}?access_token=${tokens.access_token}`)
+                  return res.redirect(`${COMPANY_REDIRECT_PAGE_URL}?access_token=${tokens.access_token}`)
             } catch (error) {
                   return res.redirect(`/login?message=${error.message}`)
             }
